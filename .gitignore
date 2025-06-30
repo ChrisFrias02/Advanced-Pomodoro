@@ -1,0 +1,41 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pyc
+
+# Virtual environments
+venv/
+ENV/
+env/
+.venv/
+
+# Flask / general env files
+*.env
+
+# SQLite database
+*.db
+
+# VSCode / IDE
+.vscode/
+.idea/
+
+# Mac / Linux / Windows system files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Pytest / coverage
+htmlcov/
+.coverage
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+
+# Migrations (if you ever use Alembic)
+migrations/
