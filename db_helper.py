@@ -55,27 +55,52 @@ def delete_task(task_id):
     return False
 
 
-def create_focus_session(user_id, duration, task_id=None, notes=None):
-    pass
+def create_focus_session(user_id, planned_minutes, task_id=None):
+    session = FocusSession(
+        user_id=user_id,
+        task_id=task_id,
+        task_name=Task.query.get(task_id).title if task_id else "General Focus",
+        planned_minutes=planned_minutes,
+        completed=False
+    )
+    db.session.add(session)
+    db.session.commit()
+    return session
 
-def get_all_task_focus_sessions(user_id,task_id ):
-    pass
+
+def get_focus_sessions_by_user(user_id,task_id ):
+    if task_id:
+        return FocusSession.query.filter_by(user_id=user_id, task_id=task_id).all()
+    else:
+        return FocusSession.query.filter_by(user_id=user_id).all()
+    
+    
 
 def delete_focus_session(session_id):
-    pass
+    session = FocusSession.query.get(session_id)
+    if session:
+        db.session.delete(session)
+        db.session.commit()
+        return True
+    return False
+    
 
 #return how many hours the user has spent in focus sessions
 def get_total_focus_time(user_id):
-    pass
+    sessions = FocusSession.query.filter_by(user_id=user_id).all()
+    total_minutes = sum(session.actual_minutes for session in sessions if session.actual_minutes)
+    return total_minutes // 60, total_minutes % 60  # Return hours and minutes
 
 def get_total_focus_time_by_task(user_id,task_id):
-    pass
+    sessions = FocusSession.query.filter_by(user_id=user_id, task_id=task_id).all()
+    total_minutes = sum(session.actual_minutes for session in sessions if session.actual_minutes)
+    return total_minutes // 60, total_minutes % 60  # Return hours and minutes
 
-def get_all_focus_sessions(user_id):
-    pass
 
-def get_focus_session_by_id(session_id):
-    pass
+def get_focus_session_by_id(session_id,user_id=None):
+    sessions = FocusSession.query.filter_by(id=session_id, user_id=user_id).first()
+    if sessions:
+        return sessions
 
     
     

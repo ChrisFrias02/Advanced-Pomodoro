@@ -7,6 +7,7 @@ import os
 
 from authAPI import UserRegistration, UserLogin
 from taskAPI import TaskList
+from timerAPI import FocusSessionList, FocusSessionStats, FocusSessionById
 
 
 # Load .env file
@@ -28,7 +29,9 @@ api = Api(app)
 api.add_resource(UserRegistration, '/api/register')
 api.add_resource(UserLogin, '/api/login')
 api.add_resource(TaskList, '/api/tasks')
-
+api.add_resource(FocusSessionList, '/api/sessions')
+api.add_resource(FocusSessionStats, '/api/sessions/stats')
+api.add_resource(FocusSessionById, '/api/sessions/<int:session_id>')
 
 if __name__ == '__main__':
     with app.app_context():
