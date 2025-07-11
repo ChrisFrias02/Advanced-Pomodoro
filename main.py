@@ -4,6 +4,8 @@ from flask_jwt_extended import JWTManager
 from models import db
 from dotenv import load_dotenv
 import os
+from flask_cors import CORS
+from flask import render_template
 
 from authAPI import UserRegistration, UserLogin
 from taskAPI import TaskList
@@ -14,7 +16,7 @@ from timerAPI import FocusSessionList, FocusSessionStats, FocusSessionById
 load_dotenv()
 
 app = Flask(__name__)
-
+CORS(app)
 # Config from env vars
 app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv("DATABASE_URL")
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
@@ -32,6 +34,19 @@ api.add_resource(TaskList, '/api/tasks')
 api.add_resource(FocusSessionList, '/api/sessions')
 api.add_resource(FocusSessionStats, '/api/sessions/stats')
 api.add_resource(FocusSessionById, '/api/sessions/<int:session_id>')
+
+
+@app.route('/')
+def home():
+    return render_template('index.html')
+
+@app.route('/login')
+def login_page():
+    return render_template('login.html')
+
+@app.route('/register')
+def register_page():
+    return render_template('register.html')
 
 if __name__ == '__main__':
     with app.app_context():

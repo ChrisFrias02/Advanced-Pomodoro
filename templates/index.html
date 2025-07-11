@@ -5,14 +5,29 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pomodoro Timer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
     <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
     <div class="authButton">
-        <a href="login.html" id="login" class="button">Sign in</a>
-        <a href="register.html" id="register" class="button">Register</a>
+        <a href="/login" id="login" class="button">Sign in</a>
+        <a href="/register" id="register" class="button">Register</a>
     </div>
+
+    <div id="profilesection">
+        <div id="loggedIn">
+            <span>Welcome!</span>
+            <button id="logoutBtn">Logout</button>
+        </div>
+
+
+
+
+        <script src="{{ url_for('static', filename='profile.js') }}"></script>
+    </div>
+
 
     <div class="Pomodorocontainer">
         <h1>Pomodoro Timer</h1>
@@ -22,7 +37,7 @@
         <button id="resetButton">Reset</button>
     </div>
 
-    <script src="fetch.js"></script>
+    <script src="{{ url_for('static', filename='timer.js') }}"></script>
 </body>
 
 </html>
