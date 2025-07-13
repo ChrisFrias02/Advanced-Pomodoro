@@ -7,7 +7,7 @@
     <title>Pomodoro Timer</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 
-    <link rel="stylesheet" href="style.css" />
+
 </head>
 
 <body>
@@ -21,23 +21,43 @@
             <span>Welcome!</span>
             <button id="logoutBtn">Logout</button>
         </div>
-
-
-
-
-        <script src="{{ url_for('static', filename='profile.js') }}"></script>
     </div>
 
-
-    <div class="Pomodorocontainer">
-        <h1>Pomodoro Timer</h1>
-        <div id="timerDisplay">25:00</div>
+    <div class="pomodorocontainer">
         <button id="startButton">Start</button>
         <button id="stopButton">Stop</button>
         <button id="resetButton">Reset</button>
+        <div id="timerDisplay">25:00</div>
+        <button id="settingsBtn">settings</button>
     </div>
 
+    <div class="modal-container" id="modal_container">
+        <div class="modal">
+            <h1>Settings</h1>
+            <div class="modal-buttons">
+                <button id="timers">Timer</button>
+
+                <button id="close">Close</button>
+
+            </div>
+            <div class="background-selector" id="backgroundSelector">
+                <h3>Select Background:</h3>
+                <button class="bg-option" data-bg="beach.gif">Forest</button>
+                <button class="bg-option" data-bg="rain.gif">Ocean</button>
+                <button class="bg-option" data-bg="rain2.gif">Mountain</button>
+                <button class="bg-option" data-bg="snow.gif">Mountain</button>
+                <button class="bg-option" data-bg="snow2.gif">Mountain</button>
+                <button class="bg-option" data-bg="study.gif">Mountain</button>
+                <button class="bg-option" data-bg="studybook.gif">Mountain</button>
+                <button class="bg-option" data-bg="forest.jpg">Mountain</button>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="{{ url_for('static', filename='profile.js') }}"></script>
     <script src="{{ url_for('static', filename='timer.js') }}"></script>
+    <script src="{{ url_for('static', filename='frontpage.js') }}"></script>
 </body>
 
 </html>
