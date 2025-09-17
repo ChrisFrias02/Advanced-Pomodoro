@@ -48,6 +48,11 @@ def login_page():
 def register_page():
     return render_template('register.html')
 
+@app.route('/tasks')
+def tasks_pahe():
+    return render_template('tasks.html')
+
+
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()

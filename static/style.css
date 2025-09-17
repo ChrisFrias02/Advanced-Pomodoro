@@ -29,6 +29,7 @@ body {
 
 /* --- Top-Right Corner Elements (Login/Profile) --- */
 
+
 .authButton,
 #profilesection {
     position: absolute;
@@ -37,6 +38,14 @@ body {
     display: flex;
     gap: 12px;
 }
+.navigation {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%); 
+    display: flex;
+    gap: 12px;
+  }
 
 #loggedIn {
     display: flex;
